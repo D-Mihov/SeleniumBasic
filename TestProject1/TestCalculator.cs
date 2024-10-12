@@ -20,7 +20,16 @@ namespace TestProject1
         [OneTimeSetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver();
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("headless");
+            chromeOptions.AddArgument("no-sandbox");
+            chromeOptions.AddArgument("disable-dev-shm-usage");
+            chromeOptions.AddArgument("disable-gpu");
+            chromeOptions.AddArgument("window-size=1920x1080");
+            chromeOptions.AddArgument("disable-extensions");
+            chromeOptions.AddArgument("remote-debugging-port=9222");
+
+            driver = new ChromeDriver(chromeOptions);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Url = "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com/number-calculator/";
 

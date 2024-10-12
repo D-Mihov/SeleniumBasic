@@ -15,8 +15,16 @@ namespace TestProject3
         [SetUp]
         public void SetUp()
         {
-            // Create object of ChromeDriver
-            driver = new ChromeDriver();
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("headless");
+            chromeOptions.AddArgument("no-sandbox");
+            chromeOptions.AddArgument("disable-dev-shm-usage");
+            chromeOptions.AddArgument("disable-gpu");
+            chromeOptions.AddArgument("window-size=1920x1080");
+            chromeOptions.AddArgument("disable-extensions");
+            chromeOptions.AddArgument("remote-debugging-port=9222");
+
+            driver = new ChromeDriver(chromeOptions);
 
             // Add implicit wait
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
