@@ -26,6 +26,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
+    - name: Grant execute permissions to Selenium Manager
+      run: |
+        chmod +x /home/runner/work/SeleniumBasic/SeleniumBasic/TestProject1/bin/Debug/net6.0/selenium-manager/linux/selenium-manager
+        chmod +x /home/runner/work/SeleniumBasic/SeleniumBasic/TestProject2/bin/Debug/net6.0/selenium-manager/linux/selenium-manager
+        chmod +x /home/runner/work/SeleniumBasic/SeleniumBasic/TestProject3/bin/Debug/net6.0/selenium-manager/linux/selenium-manager
     
     - name: Install dependencies
       run: dotnet restore SeleniumBasicExercise.sln
